@@ -1,6 +1,8 @@
 # UAS-PCD
 Project Ujian Akhir Mata Kuliah Pengolahan Citra Digital
 
+Lib: tensorflow mediapipe opencv-python numpy matplotlib
+
 Tahap 1: Data Collection (Pembuatan Dataset Citra Skeleton)
 
 Tujuan Tahap ini:

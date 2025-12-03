@@ -7,9 +7,9 @@ import time
 # --- Konfigurasi ---
 DATA_DIR = "dataset_skeleton"
 
-CLASSES = ["A", "B", "C"]
+CLASSES = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 SAMPLES_PER_CLASS = 50    # Jumlah Sampel Per Huf
-IMG_SIZE = 64             # Ukuran Citra Skeleton Akhir (64x64)
+IMG_SIZE = 128             # Ukuran Citra Skeleton Akhir (128x128)
 
 # --- Inisialisasi Mediapipe ---
 mp_hands = mp.solutions.hands
