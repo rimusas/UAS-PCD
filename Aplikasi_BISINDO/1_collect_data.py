@@ -36,7 +36,10 @@ cap = cv2.VideoCapture(0) # 0 Adalah ID bawaan laptop/PC
 print("Panduan Penggunaan: ")
 print("1. Tunjukkan pose tangan sesuai instruksi di layar.")
 print("2. Tekan 'R' untuk mulai merekam data kelas.")
-print("3. Tekan 'Q' jika ingin keluar paksa.")
+print("3. Tekan 'SPACE' untuk pause/resume perekaman.")
+print("4. Tekan 'D' untuk delete frame terakhir.")
+print("5. Tekan 'N' untuk skip ke kelas berikutnya.")
+print("6. Tekan 'Q' untuk keluar paksa.")
 
 for label in CLASSES:
     count = 0
@@ -160,6 +163,23 @@ for label in CLASSES:
             recording = False
             break # Lanjut ke huruf berikutnya di loop luar
         
+        if recording:
+            if key == ord(' '):  # SPACE untuk pause
+                recording = False
+                print(f"Perekaman DIJEDA. Tekan R untuk lanjut atau N untuk skip kelas.")
+            
+            elif key == ord('d'):  # D untuk delete last frame
+                if count > 0:
+                    last_file = os.path.join(DATA_DIR, label, f"{count-1}.jpg")
+                    if os.path.exists(last_file):
+                        os.remove(last_file)
+                        count -= 1
+                        print(f"Frame terakhir dihapus. Progress: {count}/{SAMPLES_PER_CLASS}")
+        
+        elif key == ord('n'):  # N untuk skip kelas
+            print(f"Melewati kelas '{label}' ({count}/{SAMPLES_PER_CLASS} sampel).")
+            break
+
         if key == ord('q'):
             print("\nKeluar Paksa.")
             cap.release()
